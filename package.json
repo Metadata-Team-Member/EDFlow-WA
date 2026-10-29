@@ -1,0 +1,15 @@
+{
+  "name": "edflow-wa",
+  "version": "0.1.0",
+  "description": "Animated simulation of WA public emergency department waits by triage category and presenting complaint, on SYNTHETIC example data.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "data": "node tools/generate_synthetic.mjs && node tools/build_data.mjs",
+    "serve": "python3 -m http.server 8941 --bind 127.0.0.1",
+    "reference": "node tools/fetch_reference.mjs && python3 tools/build_geo.py",
+    "establishments": "node tools/build_establishments.mjs && node tools/build_establishments_doc.mjs",
+    "test:real": "node tools/test_real_mode.mjs"
+  }
+}

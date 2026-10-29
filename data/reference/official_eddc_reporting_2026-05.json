@@ -1,0 +1,1282 @@
+{
+ "_about": "Establishments with \"Reports to EDDC\" = Y in the WA Health Establishment List, May 2026 (v0.1), read from the \"Reports to\" table (two independent text reads that agree). Est type and MPS flag from the Hospital Morbidity System Codes table of the same document. Produced by tools/extract_establishment_list.py.",
+ "source": "WA Health Establishment List, May 2026, version 0.1 (Department of Health WA)",
+ "count": 84,
+ "reportingRows": 191,
+ "totals": {
+  "EDDC": 84,
+  "HMDC": 152,
+  "NADC": 125,
+  "ESWLDC": 33,
+  "MHDC": 24,
+  "SANADC": 30
+ },
+ "byType": {
+  "AH": 79,
+  "OH": 1,
+  "NP": 3,
+  "none": 1
+ },
+ "establishments": [
+  {
+   "code": "0101",
+   "name": "Royal Perth Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Royal Perth Hospital",
+   "pdfPage": 12,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0104",
+   "name": "King Edward Memorial Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "King Edward Memorial Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0105",
+   "name": "Sir Charles Gairdner Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Sir Charles Gairdner Hospital",
+   "pdfPage": 12,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0106",
+   "name": "Fiona Stanley Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Fiona Stanley Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0107",
+   "name": "Perth Children's Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Perth Children's Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0123",
+   "name": "WA Virtual Hospital",
+   "type": "OH",
+   "mps": false,
+   "hmsName": "WA Virtual Hospital",
+   "pdfPage": 12,
+   "alsoReports": {
+    "HMDC": false,
+    "NADC": false,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0127",
+   "name": "Fitzroy Crossing Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Fitzroy Crossing Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0128",
+   "name": "Halls Creek Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Halls Creek Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0131",
+   "name": "Hedland Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Hedland Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0132",
+   "name": "Karratha Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Karratha Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0145",
+   "name": "Peel Health Campus",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Peel Health Campus",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0201",
+   "name": "Albany Health Campus",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Albany Health Campus",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0203",
+   "name": "Armadale-Kelmscott Memorial Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Armadale-Kelmscott Memorial Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0204",
+   "name": "Augusta Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Augusta Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0206",
+   "name": "Broome Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Broome Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0208",
+   "name": "Bunbury Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Bunbury Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0209",
+   "name": "Busselton Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Busselton Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0210",
+   "name": "Carnarvon Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Carnarvon Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0211",
+   "name": "Collie Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Collie Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0214",
+   "name": "Denmark Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Denmark Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0215",
+   "name": "Derby Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Derby Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0218",
+   "name": "Esperance Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Esperance Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0219",
+   "name": "Exmouth Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Exmouth Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0220",
+   "name": "Geraldton Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Geraldton Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0226",
+   "name": "Kalgoorlie Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Kalgoorlie Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0227",
+   "name": "Katanning Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Katanning Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0230",
+   "name": "Lake Grace Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Lake Grace Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0233",
+   "name": "Margaret River Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Margaret River Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0234",
+   "name": "Meekatharra Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Meekatharra Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0235",
+   "name": "Merredin Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Merredin Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0236",
+   "name": "Narrogin Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Narrogin Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0237",
+   "name": "Northam Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Northam Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0238",
+   "name": "Onslow Health Service",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Onslow Health Service",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0243",
+   "name": "Roebourne Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Roebourne Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0245",
+   "name": "Wagin Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Wagin Hospital",
+   "pdfPage": 12,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0249",
+   "name": "Wyndham Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Wyndham Hospital",
+   "pdfPage": 13,
+   "alsoReports": {
+    "HMDC": false,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0251",
+   "name": "York Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "York Hospital",
+   "pdfPage": 13,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0256",
+   "name": "Tom Price Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Tom Price Hospital",
+   "pdfPage": 12,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0257",
+   "name": "Kununurra Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Kununurra Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0260",
+   "name": "Newman Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Newman Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0267",
+   "name": "Paraburdoo Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Paraburdoo Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": false,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0271",
+   "name": "Donnybrook Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Donnybrook Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0272",
+   "name": "Laverton Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Laverton Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0273",
+   "name": "Leonora Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Leonora Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0277",
+   "name": "Rockingham General Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Rockingham General Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0401",
+   "name": "Beverley Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Beverley Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0402",
+   "name": "Boddington Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Boddington Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0403",
+   "name": "Bruce Rock Memorial Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Bruce Rock Memorial Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0404",
+   "name": "Corrigin Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Corrigin Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0405",
+   "name": "Cunderdin Hospital",
+   "type": "NP",
+   "mps": false,
+   "hmsName": "Cunderdin Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0406",
+   "name": "Dalwallinu Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Dalwallinu Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0408",
+   "name": "Dumbleyung Memorial Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Dumbleyung Memorial Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0409",
+   "name": "Kellerberrin Memorial Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Kellerberrin Memorial Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0410",
+   "name": "Gnowangerup Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Gnowangerup Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0411",
+   "name": "Goomalling Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Goomalling Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0412",
+   "name": "Harvey Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Harvey Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0413",
+   "name": "Kondinin Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Kondinin Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0414",
+   "name": "Kununoppin Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Kununoppin Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0417",
+   "name": "Moora Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Moora Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0418",
+   "name": "Morawa Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Morawa Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0419",
+   "name": "Mullewa Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Mullewa Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": false,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0422",
+   "name": "Nannup Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Nannup Hospital",
+   "pdfPage": 10,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0423",
+   "name": "Narembeen Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Narembeen Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0424",
+   "name": "Norseman Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Norseman Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0425",
+   "name": "Northampton Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Northampton Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0426",
+   "name": "North Midlands Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "North Midlands Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0427",
+   "name": "Pemberton Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Pemberton Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0428",
+   "name": "Pingelly Hospital",
+   "type": "NP",
+   "mps": false,
+   "hmsName": "Pingelly Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0429",
+   "name": "Plantagenet Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Plantagenet Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0430",
+   "name": "Ravensthorpe Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Ravensthorpe Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0431",
+   "name": "Southern Cross Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Southern Cross Hospital",
+   "pdfPage": 12,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0432",
+   "name": "Boyup Brook Soldiers Memorial Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Boyup Brook Soldiers Memorial Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0433",
+   "name": "Warren Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Warren Hospital",
+   "pdfPage": 13,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0437",
+   "name": "Wongan Hills Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Wongan Hills Hospital",
+   "pdfPage": 13,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0438",
+   "name": "Wyalkatchem-Koorda and Districts Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Wyalkatchem-Koorda and Districts Hospital",
+   "pdfPage": 13,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0444",
+   "name": "Bridgetown Hospital",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Bridgetown Hospital",
+   "pdfPage": 7,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0445",
+   "name": "Kojonup Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Kojonup Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0446",
+   "name": "Quairading Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Quairading Hospital",
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0475",
+   "name": "Kalbarri Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Kalbarri Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0476",
+   "name": "Dongara Hospital",
+   "type": "AH",
+   "mps": true,
+   "hmsName": "Dongara Hospital",
+   "pdfPage": 8,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "0642",
+   "name": "Joondalup Health Campus",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "Joondalup Health Campus",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "0645",
+   "name": "Peel Health Campus",
+   "type": null,
+   "mps": false,
+   "hmsName": null,
+   "pdfPage": 11,
+   "alsoReports": {
+    "HMDC": false,
+    "NADC": false,
+    "ESWLDC": false,
+    "MHDC": true,
+    "SANADC": true
+   }
+  },
+  {
+   "code": "4058",
+   "name": "Jurien Bay Hospital",
+   "type": "NP",
+   "mps": false,
+   "hmsName": "Jurien Bay Hospital",
+   "pdfPage": 9,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": false,
+    "MHDC": false,
+    "SANADC": false
+   }
+  },
+  {
+   "code": "6007",
+   "name": "St John of God Midland Health Campus",
+   "type": "AH",
+   "mps": false,
+   "hmsName": "St John of God Midland Health Campus",
+   "pdfPage": 12,
+   "alsoReports": {
+    "HMDC": true,
+    "NADC": true,
+    "ESWLDC": true,
+    "MHDC": true,
+    "SANADC": true
+   }
+  }
+ ]
+}

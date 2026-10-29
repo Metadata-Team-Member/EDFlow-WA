@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EDFlow WA: synthetic emergency department flow simulation</title>
+<meta name="description" content="A visual prototype of waiting times by triage category and presenting complaint in WA public emergency departments, laid out on real WA health regions and EDDC reporting establishments. All activity is SYNTHETIC.">
+<meta name="theme-color" content="#0a111d">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the simulation</a>
+<header class="top">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 44 44" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7ae7d6"/><stop offset="1" stop-color="#2aa7c9"/></linearGradient></defs><path d="M22 9c-1 3-4 5-4 8" stroke="#8be69e" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="17" cy="11" rx="4.5" ry="2.4" transform="rotate(-30 17 11)" fill="#8be69e"/><ellipse cx="27" cy="9.5" rx="4.5" ry="2.4" transform="rotate(25 27 9.5)" fill="#52c97a"/><rect x="8" y="14" width="28" height="26" rx="13" fill="url(#lg)"/><circle cx="17" cy="24" r="3" fill="#fff"/><circle cx="27" cy="24" r="3" fill="#fff"/><circle cx="17.6" cy="24.4" r="1.5" fill="#0b2233"/><circle cx="27.6" cy="24.4" r="1.5" fill="#0b2233"/><path d="M18 31q4 3.4 8 0" stroke="#0b2233" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+    <div class="titles">
+      <h1>EDFlow <span>WA</span></h1>
+      <p>WA Health Emergency Department Data Collection (EDDC) · wait time by triage and presenting complaint · aligned to the July 2026 specifications · prototype</p>
+    </div>
+  </div>
+  <div class="top-right">
+    <span class="badge-syn" title="Every person, time and outcome on this page is invented. Only the map, the EDDC establishment list and the triage targets are real reference data.">SYNTHETIC EXAMPLE DATA · not real WA Health data</span>
+    <button class="btn ghost" id="btnTour">Guided tour</button>
+    <button class="btn ghost" id="btnHow">How to read this</button>
+    <button class="btn ghost" id="btnRules">Rules in the sim</button>
+    <button class="btn ghost" id="btnEst">Establishments &amp; sources</button>
+    <button class="btn ghost" id="btnData">Data we'd need</button>
+    <button class="btn ghost" id="btnPrint">Print / PDF</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<section class="kpis" id="kpis" aria-label="Key measures"></section>
+
+<section class="stage">
+  <div class="filters" id="filters">
+    <button class="btn ghost filter-toggle" id="btnFilters" aria-expanded="false">Filters ▾</button>
+    <div class="filter-grid" id="filterGrid">
+      <label>Health Service Provider<select id="fHsp"></select></label>
+      <label>Establishment<select id="fSite"></select></label>
+      <label>Region of the site<select id="fRegion"></select></label>
+      <label>Triage category<select id="fAts"></select></label>
+      <label>Presenting complaint group<select id="fGrp"></select></label>
+      <label>Mode of arrival<select id="fMode"></select></label>
+      <label>Colour markers by<select id="fColor"><option value="ats">Triage category</option><option value="grp">Presenting complaint group</option><option value="hsp">Health Service Provider</option><option value="mode">Mode of arrival</option></select></label>
+      <label>Markers shown<select id="fDensity"><option value="1">Every attendance</option><option value="2">1 in 2</option><option value="3">1 in 3</option><option value="4">1 in 4</option><option value="6">1 in 6</option><option value="8">1 in 8</option><option value="12">1 in 12</option></select></label>
+      <button class="btn ghost" id="btnReset">Reset filters</button>
+    </div>
+  </div>
+
+  <div class="scene-wrap" id="sceneWrap">
+    <canvas id="scene" role="img" aria-label="Animated emergency department flow scene. Each marker is one synthetic attendance. People arrive at real WA EDDC sites, wait in a lane for their triage category, are seen in a Health Service Provider block and leave through a gate. All activity is synthetic."></canvas>
+    <div class="intro" id="intro">
+      <div class="intro-card">
+        <div class="intro-badge">SYNTHETIC EXAMPLE DATA</div>
+        <h2>How long do people wait to be seen in a WA ED?</h2>
+        <p>Each marker is one <b>invented</b> emergency department attendance. It arrives at a real WA site, waits in the lane for its <b>triage category</b> against the time-to-treatment target, is seen, and leaves: admitted, home, or transferred. <b>Rings</b> show the stage: none while waiting, one in care, two when ready to leave. The map and sites are real reference data; everything that happens to the markers is made up.</p>
+        <div class="intro-btns"><button class="btn primary big" id="introPlay"><span>▶</span> Press Play to begin</button><button class="btn big" id="introTour">Take the guided tour</button></div>
+        <small>Hover a dot on the map to see a site, click it to filter. Click a marker for its (synthetic) record. Space plays and pauses.</small>
+      </div>
+    </div>
+    <div class="tip" id="tip" hidden></div>
+    <aside class="card" id="card" hidden></aside>
+    <div class="loading" id="loading">Loading synthetic data and map…</div>
+  </div>
+
+  <p class="narr" id="narr" role="status" aria-live="off"></p>
+
+  <div class="controls" id="controls">
+    <button class="btn primary play" id="btnPlay" aria-label="Play or pause"><span id="playIcon">▶</span><b id="playText">Play</b></button>
+    <div class="speed" role="group" aria-label="Speed">
+      <button data-speed="1" title="Slow: 1 simulated minute per real second" aria-label="Slow, 1 minute per second">Slow<small>1 min/sec</small></button><button data-speed="10" class="on" title="Normal: 10 simulated minutes per real second" aria-label="Normal, 10 minutes per second">Normal<small>10 min/sec</small></button><button data-speed="60" title="Fast: 1 simulated hour per real second" aria-label="Fast, 1 hour per second">Fast<small>1 hour/sec</small></button><button data-speed="240" title="Turbo: 4 simulated hours per real second" aria-label="Turbo, 4 hours per second">Turbo<small>4 hours/sec</small></button>
+    </div>
+    <div class="timebox">
+      <div class="dateline"><b id="dateLabel">—</b><span id="fyLabel">AWST (Perth)</span></div>
+      <input type="range" id="slider" min="0" max="100" value="0" aria-label="Date and time">
+      <div class="ticks" id="ticks"></div>
+    </div>
+    <button class="btn ghost" id="btnRestart" title="Back to the start" aria-label="Back to the start">⟲</button>
+  </div>
+</section>
+
+<section class="legend" id="legend" aria-label="Legend"></section>
+
+<section class="charts" id="charts">
+  <article class="chart full"><h3>This week, hour by hour</h3><p class="sub">Arrivals per hour, people in the ED, and the same hour one week earlier. The dotted line is the clock.</p><canvas id="cTime" role="img" aria-label="Chart: arrivals per hour and people in the ED this week, compared with last week (synthetic)."></canvas></article>
+  <article class="chart"><h3>Seen within the triage target</h3><p class="sub">Business Rules (July 2026) §7.4 Table 1 targets</p><canvas id="cSeen" role="img" aria-label="Chart: share seen within the triage target in the last 7 days, by triage category (synthetic)."></canvas></article>
+  <article class="chart"><h3>Waiting to be seen now</h3><p class="sub">People waiting, by time waited as a share of the target</p><canvas id="cWait" role="img" aria-label="Chart: people waiting to be seen now, by triage category and time waited compared with the target (synthetic)."></canvas></article>
+  <article class="chart"><h3>How people left, by Health Service Provider</h3><p class="sub">Departures in the last 7 days, by departure status group</p><canvas id="cDep" role="img" aria-label="Chart: departures in the last 7 days by Health Service Provider and departure status group, with the share leaving within 4 hours (synthetic)."></canvas></article>
+  <article class="chart wide"><h3>Presenting complaint groups</h3><p class="sub">Arrivals and median time to be seen, last 7 days. Click a row to filter.</p><canvas id="cPc" role="img" aria-label="Chart: arrivals and median time to be seen by presenting complaint group in the last 7 days (synthetic)."></canvas></article>
+  <article class="chart"><h3>By region of the site</h3><p class="sub">Median time to be seen (7 days) and people in the ED now</p><canvas id="cReg" role="img" aria-label="Chart: median time to be seen and people in the ED now, by region (synthetic)."></canvas></article>
+  <article class="chart wide"><h3>When people arrive</h3><p class="sub">Average arrivals per hour, by weekday and hour, from the data before the clock</p><canvas id="cHeat" role="img" aria-label="Heatmap: average arrivals per hour by weekday and hour (synthetic)."></canvas></article>
+  <article class="chart note-card"><h3>What the measures mean</h3>
+    <p><b>Seen within target</b>: time from arrival to the commencement of clinical care, taken as the earlier of Doctor Seen Datetime and Nurse Seen Datetime (the rule in the WA Health 2025-26 OBM KPI Data Definition Manual; DD 2026 pp.30, 66) against the ATS target (BR §7.4). People who did not wait or were referred at triage are not in the denominator (open question 7).</p>
+    <p><b>4 hours, 6 hours</b>: length of stay from arrival to departure. These references come from the WA Emergency Access Measures named in BR §12 but are <b>not</b> given in the EDDC documents; they are shown for discussion and must be confirmed (open question 1). The virtual ED (WAVED) is left out of length-of-stay measures.</p>
+    <p>All figures are synthetic and say nothing about real performance.</p>
+  </article>
+</section>
+</main>
+
+<footer>
+  <div class="foot-badge">SYNTHETIC EXAMPLE DATA</div>
+  <p>All activity (people, attendances, times, outcomes, counts) is invented by a random-number generator so the design can be tested before any real extract is requested. Nothing here should be quoted as a finding about WA Health, any service or any person. <b>Aligned to</b> the WA Health <i>Emergency Department Data Collection Data Dictionary 2026</i>, <i>Data Specifications, July 2026</i>, <i>Emergency Department Patient Activity Data Business Rules, July 2026</i> and the <i>Establishment List, May 2026</i>; the sites shown are exactly those marked “Reports to EDDC” = Y. The Health Service Provider grouping, regions and map positions are <b>not</b> in those documents and come from the WA Government SLIP layers and OpenStreetMap. See <a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/SOURCES.md" target="_blank" rel="noopener">sources</a> and <a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/OPEN-QUESTIONS.md" target="_blank" rel="noopener">open questions</a>.</p>
+  <p class="attrib">Map and establishment data: © Government of Western Australia, Department of Health, via SLIP / data.wa.gov.au. Simplified for display. Not an official WA Health product and not endorsed by WA Health.</p>
+  <p><a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/ESTABLISHMENTS.md" target="_blank" rel="noopener">Establishment list</a> · <a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/BUSINESS-RULES-SUMMARY.md" target="_blank" rel="noopener">Business rules summary</a> · <a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/DATA-REQUIREMENTS.md" target="_blank" rel="noopener">Data requirements</a> · <a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/DATA-DICTIONARY-MAPPING.md" target="_blank" rel="noopener">Dictionary mapping</a> · <a href="https://github.com/Metadata-Team-Member/EDFlow-WA" target="_blank" rel="noopener">Source on GitHub</a></p>
+</footer>
+
+<dialog id="dlgHow"><form method="dialog">
+  <h2>How to read this</h2>
+  <ul>
+    <li><b>One marker = one ED attendance.</b> Every marker is the same friendly, gender-neutral shape with a leaf sprout, the same size for everyone. It stands for an attendance, not a person.</li>
+    <li><b>Rings = stage.</b> No ring while waiting to be seen, one ring once clinical care has started, two rings when the person is ready to leave the ED (for example a bed has been requested). Rings say nothing about how unwell someone is.</li>
+    <li><b>Colour</b> is the triage category by default (ATS 1 red to ATS 5 white). You can colour by presenting complaint group, Health Service Provider or mode of arrival instead.</li>
+    <li><b>Panel 1, the map.</b> Real WA health regions with a Perth metro inset. Each dot is an EDDC site (“Reports to EDDC” = Y), coloured by Health Service Provider; dots are one size per site type, not by beds or volume. The WA Virtual ED (WAVED) has its own “Virtual” badge. A marker appears at its site when it arrives.</li>
+    <li><b>Panel 2, waiting to be seen.</b> One lane per triage category. Position = time waited; the dashed line is the BR §7.4 target (2 / 10 / 30 / 60 / 120 minutes) and the lane runs on to 12 times the target. Past the target, a marker gets a red outline and a concerned face. People who did not wait leave from here with a “did not wait” label.</li>
+    <li><b>Panel 3, in the ED.</b> One block per Health Service Provider. Doors are treatment areas (Resus, Acute, Fast track, Mental health, Paediatric, Virtual): <b>illustrative only</b>, as EDDC has no treatment-area field. On the floor, markers drift right with time since arrival; the amber dashed line is 4 hours and the right edge is 12 hours or more. Markers leave through a gate: ward, home or transfer.</li>
+    <li><b>Spotlight</b> (last block): hover or click a site dot, or click a row in the busiest-sites list, to see one site.</li>
+    <li><b>Markers shown</b>: by default 1 in 2 attendances are drawn on a desktop (1 in 3 on a phone) so the scene stays readable; choose “Every attendance” to see them all. Numbers and charts always use every invented attendance.</li>
+  </ul>
+  <button class="btn primary">Got it</button>
+</form></dialog>
+
+<dialog id="dlgRules" class="wide-dlg"><form method="dialog">
+  <h2>Rules in the simulation</h2>
+  <p class="dlg-note">Summarised from the WA Health <i>Emergency Department Patient Activity Data Business Rules, July 2026</i> (BR), the EDDC <i>Data Dictionary 2026</i> (DD) and <i>Data Specifications, July 2026</i> (Spec), as supplied to this project. The full table is in <a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/BUSINESS-RULES-SUMMARY.md" target="_blank" rel="noopener">BUSINESS-RULES-SUMMARY.md</a>.</p>
+  <div class="tbl-wrap"><table class="rules">
+    <thead><tr><th>Rule</th><th>Source</th><th>In this simulation</th></tr></thead>
+    <tbody>
+    <tr><td>Triage on arrival using the Australasian Triage Scale. Treatment time targets: ATS 1 ≤2 min, ATS 2 ≤10, ATS 3 ≤30, ATS 4 ≤60, ATS 5 ≤120.</td><td>BR §7.4 Table 1; DD Triage Category p.98</td><td>Lanes and dashed target lines. DD p.98 describes ATS 1 as “immediate (within seconds)”; the sim uses BR's 2 minutes (open question 3).</td></tr>
+    <tr><td>Arrival time is when the person first attends; for ambulance arrivals, when they enter the ED or are first received by triage / ED clinician.</td><td>BR §7.2; DD Arrival Date/Time p.13</td><td>Time zero for every measure.</td></tr>
+    <tr><td>Clinical care can be started by a doctor or another authorised clinician (nurse practitioner, nurse, mental health practitioner). Placement in a cubicle or observations alone do not count.</td><td>BR §7.8; DD pp.30, 66</td><td>“Seen” = the earlier of Doctor Seen and Nurse Seen Datetime (OBM KPI manual 2025-26). DD p.66 mentions Nurse Seen only for WACHS (open question 6).</td></tr>
+    <tr><td>A presenting complaint / initial diagnosis must be recorded.</td><td>BR §7.7; DD Presenting Complaint p.69</td><td>Complaint codes are grouped for display. The code list is not in the documents, so most groups are placeholders (open question 2).</td></tr>
+    <tr><td><b>Did not wait</b>: triaged and registered, left before clinical care started; no clinical-care time or diagnosis is recorded.</td><td>BR §8.2; DD Departure Status p.24</td><td>Leaves from the waiting lane. Not in the seen-on-time denominator.</td></tr>
+    <tr><td><b>Referred at triage</b> to another health care service, distinct from a transfer for admission.</td><td>BR §8.1, §8.4</td><td>Leaves from the lane with a “referred at triage” label.</td></tr>
+    <tr><td><b>Left at own risk</b>: left after clinical care started and before it was complete.</td><td>BR §8.3</td><td>Leaves through the home gate.</td></tr>
+    <tr><td><b>Admission</b>: the admission time is when the person physically left the ED for an SSU, ward or theatre at the same hospital. SSUs are physically separate inpatient units, not ED overflow.</td><td>BR §8.6, §8.6.1</td><td>Ward gate. A “bed requested” moment marks ready-to-leave for admitted people.</td></tr>
+    <tr><td><b>Died in ED</b> and <b>dead on arrival</b> use their own departure statuses with destination Mortuary.</td><td>BR §8.5</td><td>Included in counts at very low rates; they leave quietly with no label.</td></tr>
+    <tr><td><b>WAVED</b> (WA Virtual ED) attendances are ED activity; a person sent on to a physical ED starts a new episode there with referral source “Other hospital”.</td><td>BR §9.2, §9.2.1</td><td>WAVED appears as a virtual site. Left out of length-of-stay measures (open question 11).</td></tr>
+    <tr><td>WA Emergency Access Measures are monitored performance indicators (see MP 0111/19).</td><td>BR §12</td><td>No figures are given in BR. The 4-hour and 6-hour references are external and must be confirmed (open question 1).</td></tr>
+    </tbody>
+  </table></div>
+  <p class="dlg-note">Not simulated: re-triage, unplanned re-attendance rules (BR §7.6.3), principal diagnosis and AECC end classes (BR §10), ambulance case numbers and handover times, methamphetamine flags, the Mental Health Observation Area (out of scope, BR §8.6.2), and edits and validation (Spec).</p>
+  <button class="btn primary">Close</button>
+</form></dialog>
+
+<dialog id="dlgEst" class="wide-dlg"><form method="dialog" id="estForm">
+  <h2>Establishments &amp; sources</h2>
+  <p class="dlg-note" id="estNote"></p>
+  <input type="search" id="estSearch" placeholder="Search name, code, region, HSP…" aria-label="Search establishments">
+  <div class="tbl-wrap tall"><table class="rules est"><thead><tr><th>Code</th><th>Establishment</th><th>HSP</th><th>Region</th><th>Establishment type</th><th>Rows in this sim</th></tr></thead><tbody id="estBody"></tbody></table></div>
+  <p class="dlg-note">Click a row to filter the simulation to that site. * HSP not from SLIP · ⚑ map position approximate. The full list with sources: <a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/ESTABLISHMENTS.md" target="_blank" rel="noopener">ESTABLISHMENTS.md</a>.</p>
+  <button class="btn primary">Close</button>
+</form></dialog>
+
+<dialog id="dlgData"><form method="dialog">
+  <h2>What real data we'd need</h2>
+  <p>This prototype runs on invented data shaped like the EDDC extract (Data Specifications, July 2026, Appendix B). To swap in real data, the key items are:</p>
+  <ul>
+    <li><b>Attendance fields</b>: establishment code, arrival date/time, triage date/time, triage category, presenting complaint code, mode of arrival, visit type, referral source, doctor seen and nurse seen date/time, departure ready date/time, bed request and ward ready date/time, departure date/time, departure status, destination, stream.</li>
+    <li><b>The presenting complaint code list</b> with descriptions, so complaints can be grouped properly.</li>
+    <li><b>De-identified person fields</b>: age group only. No name, record number or date of birth is needed for this view.</li>
+    <li><b>Reference data</b>: an official site to Health Service Provider and region mapping, and confirmation of the 4-hour and admission targets in use.</li>
+    <li><b>Governance</b>: approval through the WA Health data custodian, small-number suppression, and Aboriginal data governance.</li>
+  </ul>
+  <p><a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/DATA-REQUIREMENTS.md" target="_blank" rel="noopener">Data requirements log</a> · <a href="https://github.com/Metadata-Team-Member/EDFlow-WA/blob/main/docs/OPEN-QUESTIONS.md" target="_blank" rel="noopener">Open questions for the custodian</a></p>
+  <button class="btn primary">Close</button>
+</form></dialog>
+
+<script src="js/data.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/tour.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

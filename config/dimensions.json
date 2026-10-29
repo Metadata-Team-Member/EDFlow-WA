@@ -1,0 +1,705 @@
+{
+  "_note": "Code sets and model settings for EDFlow WA. Code labels are copied from the WA Health Emergency Department Data Collection (EDDC) Data Specifications July 2026 (Appendix B) and the EDDC Data Dictionary 2026; see docs/DATA-DICTIONARY-MAPPING.md. Everything under 'model' is an invented setting used only by the synthetic generator.",
+  "start": "2026-05-30",
+  "days": 30,
+  "simStart": "2026-06-08T08:00",
+  "maxStayMin": 2160,
+  "regionOrder": [
+    "North Metro",
+    "East Metro",
+    "South Metro",
+    "South West",
+    "Great Southern",
+    "Wheatbelt",
+    "Midwest",
+    "Goldfields",
+    "Pilbara",
+    "Kimberley",
+    "Statewide (virtual)"
+  ],
+  "regionHsp": {
+    "North Metro": "NMHS",
+    "East Metro": "EMHS",
+    "South Metro": "SMHS",
+    "Statewide (virtual)": "WACHS"
+  },
+  "triage": [
+    {
+      "code": "1",
+      "label": "Resuscitation",
+      "dictLabel": "Resuscitation: immediate (within seconds)",
+      "targetMin": 2,
+      "kpiPct": 100
+    },
+    {
+      "code": "2",
+      "label": "Emergency",
+      "dictLabel": "Emergency: within 10 minutes",
+      "targetMin": 10,
+      "kpiPct": 80
+    },
+    {
+      "code": "3",
+      "label": "Urgent",
+      "dictLabel": "Urgent: within 30 minutes",
+      "targetMin": 30,
+      "kpiPct": 75
+    },
+    {
+      "code": "4",
+      "label": "Semi-urgent",
+      "dictLabel": "Semi-urgent: within 60 minutes",
+      "targetMin": 60,
+      "kpiPct": 70
+    },
+    {
+      "code": "5",
+      "label": "Non-urgent",
+      "dictLabel": "Non-urgent: within 120 minutes",
+      "targetMin": 120,
+      "kpiPct": 70
+    }
+  ],
+  "triageSources": {
+    "targetMin": "ED Business Rules July 2026 §7.4 Table 1 (ATS1 ≤2 min, ATS2 ≤10, ATS3 ≤30, ATS4 ≤60, ATS5 ≤120; adapted from ACEM). The Data Dictionary 2026 p.98 labels ATS1 'immediate (within seconds)'.",
+    "kpiPct": "EXTERNAL: 'seen within recommended times' thresholds as published in WA HSP annual reports (for example EMHS); the indicator is defined in the WA Health 2025-26 OBM KPI Data Definition Manual §7.1.0. Not in the EDDC documents. Shown as reference ticks only; to be confirmed by the custodian."
+  },
+  "triageNotSimulated": [
+    {
+      "code": "6",
+      "label": "Dead on arrival"
+    },
+    {
+      "code": "7",
+      "label": "Direct Admission"
+    },
+    {
+      "code": "8",
+      "label": "Inpatient"
+    }
+  ],
+  "accessTargets": {
+    "_source": "EXTERNAL, not in the EDDC documents (Business Rules §12 refers to the WA Emergency Access Measures and MP 0111/19 without figures). WEAT: 4-Hour Rule / WA Emergency Access Target. EAR: Emergency Access Reform measures as reported by the Office of the Auditor General WA. To be confirmed by the custodian.",
+    "weat": {
+      "pct": 90,
+      "hours": 4,
+      "label": "WEAT: 90% of attendances leave the ED within 4 hours"
+    },
+    "discharged": {
+      "pct": 80,
+      "hours": 4,
+      "label": "80% of attendances ending in discharge within 4 hours"
+    },
+    "admitted": {
+      "pct": 80,
+      "hours": 6,
+      "label": "80% of attendances ending in admission within 6 hours"
+    },
+    "all12": {
+      "pct": 100,
+      "hours": 12,
+      "label": "100% of attendances within 12 hours"
+    }
+  },
+  "modes": [
+    {
+      "code": "1",
+      "label": "Private transport",
+      "group": "Own way"
+    },
+    {
+      "code": "2",
+      "label": "Public transport",
+      "group": "Own way"
+    },
+    {
+      "code": "3",
+      "label": "Ambulance",
+      "group": "Ambulance"
+    },
+    {
+      "code": "4",
+      "label": "Hospital transport",
+      "group": "Other"
+    },
+    {
+      "code": "5",
+      "label": "Police/Correctional Services",
+      "group": "Police / correctional"
+    },
+    {
+      "code": "6",
+      "label": "Helicopter rescue",
+      "group": "Air (RFDS / helicopter)"
+    },
+    {
+      "code": "7",
+      "label": "Royal Flying Doctor Service",
+      "group": "Air (RFDS / helicopter)"
+    },
+    {
+      "code": "8",
+      "label": "Other",
+      "group": "Other"
+    },
+    {
+      "code": "9",
+      "label": "Not Stated/Unknown",
+      "group": "Other"
+    },
+    {
+      "code": "10",
+      "label": "Taxi",
+      "group": "Own way"
+    }
+  ],
+  "modeGroups": [
+    "Own way",
+    "Ambulance",
+    "Air (RFDS / helicopter)",
+    "Police / correctional",
+    "Other"
+  ],
+  "visitTypes": [
+    {
+      "code": "1",
+      "label": "Emergency Presentation"
+    },
+    {
+      "code": "2",
+      "label": "Return Visit - Planned"
+    },
+    {
+      "code": "3",
+      "label": "Unplanned Return visit"
+    },
+    {
+      "code": "4",
+      "label": "Outpatient/Outpatient Clinic"
+    },
+    {
+      "code": "7",
+      "label": "Pre-Arranged Admission"
+    },
+    {
+      "code": "10",
+      "label": "Dead On Arrival"
+    },
+    {
+      "code": "12",
+      "label": "GP Referral"
+    },
+    {
+      "code": "15",
+      "label": "Transfer from other hospital"
+    },
+    {
+      "code": "16",
+      "label": "Direct Admission"
+    },
+    {
+      "code": "23",
+      "label": "Inpatient"
+    },
+    {
+      "code": "26",
+      "label": "Pre-Ambulance Dispatch"
+    },
+    {
+      "code": "27",
+      "label": "Referred by Paramedic"
+    },
+    {
+      "code": "28",
+      "label": "Urgent Care Clinics"
+    },
+    {
+      "code": "29",
+      "label": "Referred by Silverchain"
+    }
+  ],
+  "referralSources": [
+    {
+      "code": "1",
+      "label": "Appointment"
+    },
+    {
+      "code": "2",
+      "label": "GP – Letter"
+    },
+    {
+      "code": "3",
+      "label": "GP – No letter"
+    },
+    {
+      "code": "4",
+      "label": "Self/relative"
+    },
+    {
+      "code": "5",
+      "label": "Clinic"
+    },
+    {
+      "code": "6",
+      "label": "Other hospital"
+    },
+    {
+      "code": "7",
+      "label": "Other"
+    }
+  ],
+  "departure": [
+    {
+      "code": "1",
+      "label": "Admitted to a hospital ward",
+      "group": "admitted",
+      "gate": "ward"
+    },
+    {
+      "code": "2",
+      "label": "ED service event completed; departed under own care",
+      "group": "home",
+      "gate": "home"
+    },
+    {
+      "code": "3",
+      "label": "Transferred to another hospital for admission",
+      "group": "transfer",
+      "gate": "transfer"
+    },
+    {
+      "code": "4",
+      "label": "Did not wait to be attended by medical officer",
+      "group": "dnw",
+      "gate": "lane"
+    },
+    {
+      "code": "5",
+      "label": "Left at own risk",
+      "group": "laor",
+      "gate": "home"
+    },
+    {
+      "code": "6",
+      "label": "Died in ED",
+      "group": "other",
+      "gate": "none"
+    },
+    {
+      "code": "7",
+      "label": "Dead on arrival, not treated in ED",
+      "group": "other",
+      "gate": "none"
+    },
+    {
+      "code": "8",
+      "label": "Referred at Triage to other Health Care Service",
+      "group": "triage",
+      "gate": "lane"
+    },
+    {
+      "code": "9",
+      "label": "Unknown",
+      "group": "other",
+      "gate": "home"
+    },
+    {
+      "code": "10",
+      "label": "Admitted to ED Short Stay Unit (SSU)",
+      "group": "admitted",
+      "gate": "ward"
+    },
+    {
+      "code": "11",
+      "label": "Admitted to Hospital in the Home (HITH)",
+      "group": "admitted",
+      "gate": "ward"
+    },
+    {
+      "code": "13",
+      "label": "Returned to (or transferred to) residential aged care",
+      "group": "home",
+      "gate": "home"
+    },
+    {
+      "code": "14",
+      "label": "Returned to Hospital in the Home (HITH) care",
+      "group": "home",
+      "gate": "home"
+    },
+    {
+      "code": "20",
+      "label": "Admitted Reversal",
+      "group": "other",
+      "gate": "home"
+    },
+    {
+      "code": "21",
+      "label": "Virtual Emergency Care Completed at Home",
+      "group": "virtual",
+      "gate": "none"
+    },
+    {
+      "code": "22",
+      "label": "Transfer to Hospital Emergency Department",
+      "group": "transfer",
+      "gate": "transfer"
+    }
+  ],
+  "departureGroups": [
+    {
+      "key": "admitted",
+      "label": "Admitted (ward, SSU, HITH)"
+    },
+    {
+      "key": "home",
+      "label": "Departed under own care / returned to residence"
+    },
+    {
+      "key": "virtual",
+      "label": "Virtual care completed at home"
+    },
+    {
+      "key": "transfer",
+      "label": "Transferred"
+    },
+    {
+      "key": "dnw",
+      "label": "Did not wait"
+    },
+    {
+      "key": "laor",
+      "label": "Left at own risk"
+    },
+    {
+      "key": "triage",
+      "label": "Referred at triage"
+    },
+    {
+      "key": "other",
+      "label": "Other / unknown"
+    }
+  ],
+  "destinations": [
+    {
+      "code": "1",
+      "label": "Did not wait"
+    },
+    {
+      "code": "2",
+      "label": "Left at own risk"
+    },
+    {
+      "code": "3",
+      "label": "Residential aged care"
+    },
+    {
+      "code": "4",
+      "label": "Transferred"
+    },
+    {
+      "code": "5",
+      "label": "Mortuary"
+    },
+    {
+      "code": "6",
+      "label": "Admitted"
+    },
+    {
+      "code": "7",
+      "label": "Other hospital"
+    },
+    {
+      "code": "8",
+      "label": "Home"
+    },
+    {
+      "code": "9",
+      "label": "Unknown"
+    },
+    {
+      "code": "10",
+      "label": "Other"
+    },
+    {
+      "code": "11",
+      "label": "Admitted to ED Observation Ward"
+    },
+    {
+      "code": "12",
+      "label": "Mental Health/Psychiatric Facility"
+    }
+  ],
+  "complaintGroups": [
+    {
+      "key": "INJ",
+      "label": "Injury",
+      "confirmed": false,
+      "hue": 28,
+      "codes": [
+        "#INJ0"
+      ]
+    },
+    {
+      "key": "ABD",
+      "label": "Abdominal",
+      "confirmed": false,
+      "hue": 48,
+      "codes": [
+        "#ABD0"
+      ]
+    },
+    {
+      "key": "CHE",
+      "label": "Chest pain",
+      "confirmed": "example",
+      "hue": 0,
+      "codes": [
+        "BEA00"
+      ],
+      "basis": "DD 2026 p.57, example 3: a person with chest pain is triaged with code BEA00. The B heading itself is not listed."
+    },
+    {
+      "key": "BRE",
+      "label": "Breathing",
+      "confirmed": false,
+      "hue": 195,
+      "codes": [
+        "#BRE0"
+      ]
+    },
+    {
+      "key": "FEV",
+      "label": "Fever / infection",
+      "confirmed": false,
+      "hue": 320,
+      "codes": [
+        "#FEV0"
+      ]
+    },
+    {
+      "key": "NEU",
+      "label": "Neurological",
+      "confirmed": true,
+      "hue": 265,
+      "prefix": "K",
+      "codes": [
+        "K0000",
+        "KB000"
+      ],
+      "basis": "DD 2026 p.58 Table 1: KB000 NEUROLOGICAL; ALTERED CONSCIOUS STATE"
+    },
+    {
+      "key": "SOC",
+      "label": "Social / behavioural",
+      "confirmed": true,
+      "hue": 210,
+      "prefix": "T",
+      "codes": [
+        "T0000",
+        "TD000",
+        "TG000",
+        "TGA00",
+        "TGB00",
+        "TP000",
+        "TR000",
+        "TW000",
+        "TX000"
+      ],
+      "basis": "DD 2026 p.58-59 Table 1: T0000 SOCIAL / BEHAVIOURAL and its sub-codes"
+    },
+    {
+      "key": "AOD",
+      "label": "Alcohol and other drug use",
+      "confirmed": true,
+      "hue": 160,
+      "prefix": "E",
+      "codes": [
+        "E0000",
+        "EFA00",
+        "EK000",
+        "EKA00",
+        "EKB00",
+        "EKBF0",
+        "EKBH0"
+      ],
+      "basis": "DD 2026 p.58 Table 1: E0000 DRUG / ALCOHOL USE and its sub-codes"
+    },
+    {
+      "key": "POI",
+      "label": "Poison / chemical exposure",
+      "confirmed": true,
+      "hue": 90,
+      "prefix": "R",
+      "codes": [
+        "R0000",
+        "RD000",
+        "RDA00",
+        "RHA00"
+      ],
+      "basis": "DD 2026 p.58-59 Table 1: R0000 POISON / CHEMICAL EXPOSURE and its sub-codes"
+    },
+    {
+      "key": "OTH",
+      "label": "Other / not yet mapped",
+      "confirmed": false,
+      "hue": 225,
+      "codes": [
+        "#OTH0"
+      ]
+    }
+  ],
+  "complaintNote": "The EDDC documents give no full presenting complaint code list (DD 2026 p.69: format X(5), 'symptom codes are uniform with EDIS APAC 21'). Groups marked confirmed:true use the heading letter shown in DD Table 1 (p.58-59). Groups marked confirmed:false are placeholders with invented codes starting with '#' so they can never be mistaken for a real code; real data maps them to 'Other / not yet mapped' until the custodian supplies the code list.",
+  "treatmentAreas": [
+    {
+      "key": "RES",
+      "label": "Resus"
+    },
+    {
+      "key": "ACU",
+      "label": "Acute"
+    },
+    {
+      "key": "FTR",
+      "label": "Fast track"
+    },
+    {
+      "key": "MHA",
+      "label": "Mental health"
+    },
+    {
+      "key": "PAE",
+      "label": "Paediatric"
+    },
+    {
+      "key": "VIR",
+      "label": "Virtual"
+    }
+  ],
+  "treatmentAreaNote": "Treatment areas are a display device derived from triage category, complaint group, age and site. They are not an EDDC field (the optional 'stream' field holds COVID-19 / Fast Track / FDV only, DD 2026 p.93).",
+  "ageGroups": [
+    "0–14",
+    "15–34",
+    "35–64",
+    "65–84",
+    "85+"
+  ],
+  "model": {
+    "_note": "Invented settings for the synthetic generator only. Daily arrivals are rough orders of magnitude for a WA site of that size, not published figures.",
+    "siteDailyArrivals": {
+      "0101": 190,
+      "0104": 25,
+      "0105": 205,
+      "0106": 200,
+      "0107": 190,
+      "0123": 120,
+      "0145": 150,
+      "0203": 165,
+      "0277": 165,
+      "0642": 270,
+      "6007": 190,
+      "0208": 140,
+      "0220": 100,
+      "0201": 80,
+      "0226": 85,
+      "0206": 70,
+      "0131": 65,
+      "0132": 60,
+      "0209": 80,
+      "0257": 40,
+      "0210": 40,
+      "0218": 40,
+      "0237": 40,
+      "0236": 28,
+      "0215": 30,
+      "0211": 22,
+      "0227": 18,
+      "0233": 25,
+      "0235": 12,
+      "0260": 20,
+      "0127": 25,
+      "0128": 20,
+      "0249": 8,
+      "0256": 8,
+      "0267": 5,
+      "0238": 4,
+      "0243": 10,
+      "0219": 10,
+      "0234": 8,
+      "0204": 6,
+      "0214": 10,
+      "0412": 12,
+      "0429": 10,
+      "0433": 12,
+      "0444": 10
+    },
+    "defaultDailyByTier": {
+      "DIST": 5,
+      "POST": 2,
+      "ALIAS": 0
+    },
+    "weekday": [
+      1.0,
+      1.1,
+      1.0,
+      0.98,
+      0.97,
+      0.99,
+      0.97
+    ],
+    "weekdayNote": "index 0 = Sunday. Monday is the busiest day.",
+    "hourWeekday": [
+      2.6,
+      2.1,
+      1.8,
+      1.5,
+      1.4,
+      1.5,
+      2.0,
+      3.0,
+      4.5,
+      5.6,
+      6.1,
+      6.1,
+      5.8,
+      5.6,
+      5.4,
+      5.3,
+      5.4,
+      5.6,
+      5.6,
+      5.4,
+      5.0,
+      4.4,
+      3.7,
+      3.1
+    ],
+    "hourWeekend": [
+      3.0,
+      2.5,
+      2.1,
+      1.8,
+      1.6,
+      1.6,
+      1.9,
+      2.6,
+      3.8,
+      5.0,
+      5.9,
+      6.1,
+      5.9,
+      5.6,
+      5.4,
+      5.3,
+      5.4,
+      5.5,
+      5.5,
+      5.3,
+      4.9,
+      4.4,
+      3.8,
+      3.3
+    ]
+  },
+  "_period": "30 days from Saturday 30 May 2026 to Sunday 28 June 2026. The simulation opens on Monday 8 June 2026 08:00 so that \"same time last week\" and 7-day measures have a full week behind them."
+}
