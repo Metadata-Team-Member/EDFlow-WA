@@ -23,7 +23,7 @@
 
 Every small marker is one **ED attendance**. All markers have the same shape and size, with a leaf sprout. Size never encodes anything.
 
-1. **Arriving.** A marker appears at its site on the WA map (10 health regions, with a Perth metro inset). Sites are coloured by Health Service Provider (HSP).
+1. **Arriving.** The site dot flashes on the WA map (10 health regions, with a Perth metro inset) and the marker appears directly in its triage lane. Sites are coloured by Health Service Provider (HSP).
 2. **Waiting to be seen.** The marker joins a lane for its triage category (ATS 1–5). Its position along the lane is the time waited, compared with the Business Rules treatment time: 2, 10, 30, 60 and 120 minutes (BR §7.4 Table 1). A marker past its target gets a **red ring outline** on the ground and a concerned face.
 3. **In the ED.** When clinical care starts, the marker goes through a door into its HSP block. There it drifts right with its time since arrival. A dashed amber line marks 4 hours, and a marker past it gets an **amber ring outline**.
 4. **Leaving.** The marker leaves through a gate: Ward (admitted), Home or Transfer. People who did not wait, or were referred at triage, leave from the waiting lane.

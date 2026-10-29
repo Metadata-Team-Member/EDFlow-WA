@@ -304,7 +304,10 @@
   function onArrive(i) {
     if (agents.has(i)) return;
     const a = makeAgent(i, 1, Scene.t); const e = ests[D.site[i]];
-    if (e) { a.x = e.x; a.y = e.y; e.pulse = 1; a.alpha = 0.25; a.spawn = 1; }
+    // The marker appears (fades in) directly in its triage lane; the site dot on the map flashes to show where
+    // the person arrived. Walking from the map made ATS 1 markers cut across the other lanes on their way to Resus.
+    if (e) e.pulse = 1;
+    a.alpha = 0.25; a.spawn = 1;
     agents.set(i, a); list.push(a);
   }
   function onSeen(i) {
